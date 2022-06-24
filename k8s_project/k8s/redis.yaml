@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-db
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-db
+  template:
+    metadata:
+      labels:
+        app: redis-db
+    spec:
+      containers:
+        - name: redis-db
+          image: redis
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-db-cluster
+spec:
+  selector:
+    app: redis-db
+  ports:
+    - name: redis-db
+      protocol: TCP
+      port: 6379
+      targetPort: 6379
+  type: ClusterIP

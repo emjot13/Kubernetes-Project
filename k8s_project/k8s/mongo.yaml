@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secret
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secret
+  template:
+    metadata:
+      labels:
+        app: secret
+    spec:
+      containers:
+        - name: secret
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: secret
+spec:
+  selector:
+    app: secret
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
