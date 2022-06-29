@@ -1,5 +1,0 @@
-Zad4.
-Utworzonego pliku już nie będzie, bo tworzymy nowy kontener.
-Ale moglibyśmy użyć komendy docker ps -a, żeby wyświetlić również zamknięte 
-kontenery i używając komend docker start i docker attach razem z id kontenera
-można wyświetlić plik.
